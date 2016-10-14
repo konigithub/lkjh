@@ -22,7 +22,7 @@ use yii\helpers\ArrayHelper;
        $listData=ArrayHelper::map($categories,'id','name');
     ?>
     
-    <?= $form->field($model, 'id')->dropDownList(
+    <?= $form->field($model, 'pid')->dropDownList(
                 $listData,
                 ['prompt'=>'选择...']);
     ?>
