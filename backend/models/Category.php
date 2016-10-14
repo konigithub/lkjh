@@ -41,7 +41,7 @@ class Category extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => '属性ID',
+            'id' => '所属分类',
             'name' => '属性名字',
             'description' => '属性描述',
             'pid' => '父级节点',
