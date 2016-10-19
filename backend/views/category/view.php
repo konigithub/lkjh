@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use app\models\Category;
 /* @var $this yii\web\View */
 /* @var $model app\models\Category */
 
@@ -31,7 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'description',
-            'pid',
+                [
+                        'label'=>'所属分类',
+                        'value'=>Category::find()->where(['=', 'id', $model->pid])->asArray()->one()['name'],
+                        
+                ]
         ],
     ]) ?>
 
