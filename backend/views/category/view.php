@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'description',
                 [
                         'label'=>'所属分类',
-                        'value'=>Category::find()->where(['=', 'id', $model->pid])->asArray()->one()['name'],
+                        'value'=>(Category::find()->where(['=', 'id', $model->pid])->asArray()->one()['id']>0)? Category::find()->where(['=', 'id', $model->pid])->asArray()->one()['name']:'无',
                         
                 ]
         ],
