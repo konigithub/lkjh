@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use app\models\Category;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
@@ -24,7 +25,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'description',
-            'pid',
+            [
+                'label'=>'所属分类',
+                'value'=> function ($model) {
+                    return (Category::find()->where(['=', 'id', $model->pid])->asArray()->one()['id']>0)? Category::find()->where(['=', 'id', $model->pid])->asArray()->one()['name']:'无';
+                },
+                
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
