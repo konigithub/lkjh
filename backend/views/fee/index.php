@@ -28,6 +28,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'money',
             [
                 'label'=>'消费类型',
+                'class' => 'yii\grid\DataColumn',
+                'attribute' => 'cid',
                 'value'=> function ($model) {
                     return (Category::find()->where(['=', 'id', $model->cid])->asArray()->one()['id']>0)? Category::find()->where(['=', 'id', $model->cid])->asArray()->one()['name']:'无';
                 },
