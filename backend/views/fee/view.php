@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\Category;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Fee */
@@ -31,7 +32,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'feedate',
             'money',
-            'cid',
+                [
+                        'label'=>'消费类型',
+                        'value'=>(Category::find()->where(['=', 'id', $model->cid])->asArray()->one()['id']>0)? Category::find()->where(['=', 'id', $model->cid])->asArray()->one()['name']:'无',
+                        
+                ],
             'remark',
         ],
     ]) ?>

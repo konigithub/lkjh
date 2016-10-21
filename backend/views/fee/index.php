@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use app\models\Category;
+
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
@@ -24,7 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'feedate',
             'money',
-            'cid',
+            [
+                'label'=>'消费类型',
+                'value'=> function ($model) {
+                    return (Category::find()->where(['=', 'id', $model->cid])->asArray()->one()['id']>0)? Category::find()->where(['=', 'id', $model->cid])->asArray()->one()['name']:'无';
+                },
+                
+            ],
             'remark',
 
             ['class' => 'yii\grid\ActionColumn'],

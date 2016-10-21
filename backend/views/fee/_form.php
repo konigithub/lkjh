@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Category;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Fee */
@@ -16,8 +18,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'money')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'cid')->textInput() ?>
-
+    <?php 
+       $categories=Category::find()->all();
+       $listData=ArrayHelper::map($categories,'id','name');
+    ?>
+    
+    <?= $form->field($model, 'cid')->dropDownList(
+                $listData,
+                ['prompt'=>'选择...']);
+    ?>
     <?= $form->field($model, 'remark')->textInput() ?>
 
     <div class="form-group">
