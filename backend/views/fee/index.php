@@ -20,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'summary' => " {begin} - {end} 共计 {totalCount} 项",
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
