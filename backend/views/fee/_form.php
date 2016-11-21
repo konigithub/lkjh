@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\Category;
 use yii\helpers\ArrayHelper;
+use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Fee */
@@ -14,7 +15,10 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'feedate')->textInput() ?>
+    <?= $form->field($model, 'feedate')->widget(\yii\jui\DatePicker::classname(), [
+        'language' => 'zh-cn',
+        'dateFormat' => 'yyyy-MM-dd',
+    ]) ?>
 
     <?= $form->field($model, 'money')->textInput(['maxlength' => true]) ?>
 
